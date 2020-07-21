@@ -4,6 +4,22 @@ body, html {
     padding:0;
     width: 100%;
 }
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.count-message {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+}
+
 .todo-details {
     display:flex;
     flex-direction:column;
@@ -23,17 +39,19 @@ body, html {
 }
 
 .todo {
-
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    margin: 2em;
+    // margin: 2em;
+    margin: auto;
+    margin-top: 20px;
 
     form {
 
         display:flex;
         flex-direction:column;
         margin-right: 2em;
+        
 
         label {
             display: flex;
@@ -53,27 +71,20 @@ body, html {
             display:flex;
             flex-direction:row;
             font-size: .75em;
-            margin: .75em .5em;
+            // margin: .75em .5em;
 
             &.complete-true {
               span {
-                background: pink;
                 text-decoration:line-through;
-                &:hover {
-                   background: seagreen;
-                }
+            
               }
             }
 
             span {
-                background: #e0e0e0;
+                
                 cursor:pointer;
-                &:hover {
-                    background: pink;
-                }
-            }
-             span, input {
-                 border: .5px solid #eee;
+                            }
+             span, input {                 
                  display:inline-block;
                  padding: .2em .25em;
                  width: 300px;

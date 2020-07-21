@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
+import {Container, Row, Col } from 'react-bootstrap';
 
 import './todo.scss';
 
@@ -50,25 +51,33 @@ const ToDo = () => {
 
   return (
     <>
-      <header>
-        <h2>
-        There are {count} Items To Complete
-        </h2>
-      </header>
-
-      <section className="todo">
-
-        <div>
-          <TodoForm handleSubmit={addItem} />
-        </div>
-
-        <div>
-          <TodoList
-            list={list}
-            handleComplete={toggleComplete}
-          />
-        </div>
-      </section>
+      <Container fluid>
+        <Row fluid>
+          <section className="count-message">
+            <h2>
+            There are {count} Items To Complete
+            </h2>
+          </section>
+        </Row>
+        
+        <Row>
+          <section className="todo">
+            <Col>
+              <div>
+                <TodoForm handleSubmit={addItem} />
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <TodoList
+                  list={list}
+                  handleComplete={toggleComplete}
+                />
+              </div>
+            </Col>
+          </section>
+        </Row>
+      </Container>
     </>
   );
 };

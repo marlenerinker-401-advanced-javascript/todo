@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 const TodoForm = (props) => {
 
 
   const [item, changeItem] = useState({});
-  console.log(item);
+  
 
   const handleInputChange = (e) => {
     changeItem({...item, [e.target.name]: e.target.value} );
@@ -37,7 +38,7 @@ const TodoForm = (props) => {
           <span>Assigned To</span>
           <input type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
         </label>
-        <button>Add Item</button>
+        <Button type="submit">Add Item</Button>
       </form>
     </>
   );

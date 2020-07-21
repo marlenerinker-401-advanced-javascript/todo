@@ -38,10 +38,9 @@ node-sass": "^4.14.1",
 - react-jsonschema-form
 - react-bootstrap
 - bootstrap
-<!-- - enzyme
+- enzyme
 - enzyme-adapter-react-16
-- gh-pages
-- react-test-renderer  -->
+- react-test-renderer 
 
 
 
@@ -51,10 +50,12 @@ npm start
 
 #### Tests
 
-<!-- - Unit Tests: `npm test` (run from the `__tests__` folder to run all tests)
+- Unit Tests: `npm test` (run from the `__tests__` folder to run all tests)
 
 - Assertions Made: -->
-  <!-- -  --> 
+  - Test that TodoList renders
+  - Test that ToDo renders
+  - Test that TodoForm renders
 
 
 
