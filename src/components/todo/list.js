@@ -10,7 +10,7 @@ const TodoList = (props) => {
     return 'danger';
   };
   
-
+  
   return (
     <ListGroup as="ul" variant="flush">
       {props.list.map(item => (
@@ -18,9 +18,13 @@ const TodoList = (props) => {
           className={`complete-${item.complete.toString()}`}
           key={item._id}
         >
-          <span onClick={() => props.handleComplete(item._id)}>
+          <span onClick={() => props.handleDelete(item._id)}>Delete Me</span>
+          <span>
             {item.text} - {item.assignee}
           </span>
+          {/* <span onClick={() => props.handleComplete(item._id)}>
+            {item.text} - {item.assignee}
+          </span> */}
         </ListGroup.Item>
       ))}
     </ListGroup>

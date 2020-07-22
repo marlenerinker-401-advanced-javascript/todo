@@ -20,13 +20,7 @@ No `.env` requirements at this time.
 
 #### Packages to Install
 (See package.json)
-node-sass": "^4.14.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-jsonschema-form": "1.8.1",
-    "react-router-dom": "5.2.0",
-    "react-scripts": "3.4.1",
-    "uuid": "8.1.0"
+
 
 <!-- - eslint-plugin-react -->
 - node-sass
@@ -41,6 +35,7 @@ node-sass": "^4.14.1",
 - enzyme
 - enzyme-adapter-react-16
 - react-test-renderer 
+- axios
 
 
 
