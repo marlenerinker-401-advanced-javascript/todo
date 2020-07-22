@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import useForm from '../../hooks/useForm.js';
 
 const TodoForm = (props) => {
 
 
-  const [item, changeItem] = useState({});
+  
+  const [item, handleInputChange, handleSubmit] = useForm(props.handleSubmit);
   
 
-  const handleInputChange = (e) => {
-    changeItem({...item, [e.target.name]: e.target.value} );
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    changeItem({});
-  };
 
   return (
     <>
