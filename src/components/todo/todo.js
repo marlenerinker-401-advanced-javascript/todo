@@ -78,8 +78,8 @@ const ToDo = () => {
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify(item),
       })
-        .then(response => console.log(response.data))
-        .then(savedItem => {
+       
+        .then(response => {
           getTodoItems();
         })
         .catch(console.error);

@@ -56,3 +56,7 @@ npm start
 
 #### UML
 ![UML Diagram](todo.jpg)
+
+#### Citations
+
+Paul DePew helped me with using bootstrap, especially styling the todo list items.
