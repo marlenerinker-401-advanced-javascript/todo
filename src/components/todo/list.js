@@ -13,7 +13,8 @@ const TodoList = (props) => {
   
   const [currentPage, setPage] = useState(1);
   const [displayList, setDisplay] = useState([]);
-  const [toggleState, setToggleState] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(true);
+  
   
   let totalPages = Math.floor(props.list.length/context.settings[0].pageMax);
   
@@ -32,6 +33,20 @@ const TodoList = (props) => {
   
   function cutList(list, page) {
     let startIndex = 0;
+
+    let tempList = list;
+    let filteredList = [];
+    
+    if(context.settings[0].showCompleted === false){
+      console.log('in the if statement');
+      for(let j = 0; j < tempList.length; j++) {
+        if(tempList[j].complete === false) {
+          filteredList.push(tempList[j]);
+        }
+      }
+      tempList = filteredList;
+
+    }
     
     if(page !== 1) {
       startIndex = (page * context.settings[0].pageMax)-1;
@@ -39,8 +54,8 @@ const TodoList = (props) => {
     console.log(startIndex);
     let pageList = [];
     for(let i = startIndex; i< (startIndex + context.settings[0].pageMax); i++) {
-      if(list[i]){        
-        pageList.push(list[i]);     
+      if(tempList[i]){        
+        pageList.push(tempList[i]);     
       }
     }
     
@@ -52,9 +67,18 @@ const TodoList = (props) => {
     
     
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if(firstLoad === true) {
+        cutList(props.list, 1);
+        setPage(1);
+        setFirstLoad(false);
+      }
+    }, 2000);
+  });
   
-  let temp = context.settings[0];
-  console.log('temp: ', temp);
+  
   
   let itemStatus = 'Pending';
   
@@ -67,20 +91,7 @@ const TodoList = (props) => {
     return 'danger';
   };
 
-  const toggleComplete = () => {
-
-    setToggleState(!toggleState);
-     
-    let pageList = [];
-    for(let i = 0; i< props.list.length; i++){
-      if(props.list[i].complete === toggleState || props.list[i].complete === false) {
-        pageList.push(props.list[i]);
-      }
-    }       
-    if (pageList !== []){
-      setDisplay(pageList);
-    }
-  };
+  
 
   
 
@@ -89,7 +100,6 @@ const TodoList = (props) => {
   
   return (
     <>
-      <Button id="show-complete" variant="primary" as="input" type="button" value="Show/Hide Complete" onClick={toggleComplete}/>{' '}
       <ListGroup as="ul" variant="flush">
         {displayList.map(item => (
           <Toast as="li" 
