@@ -122,7 +122,7 @@ const ToDo = () => {
         <Row fluid>
           <section className="count-message">
             <h2>
-            There are {count} items to complete. <br></br>Click page number if you don't see any.
+            There are {count} items to complete.
             </h2>
           </section>
         </Row>
