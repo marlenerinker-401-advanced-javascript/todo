@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
 import {Container, Row, Col } from 'react-bootstrap';
+import Pagination from 'react-bootstrap-4-pagination';
+
+
 
 import './todo.scss';
 import axios from 'axios';
+
+
 
 
 
@@ -13,8 +18,11 @@ const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 const ToDo = () => {
 
+ 
+
   const [list, setList] =useState([]);
   const [count, setCount] =useState(0);
+  
 
   const addItem = (item) => {
     item.due = new Date();
@@ -114,7 +122,7 @@ const ToDo = () => {
         <Row fluid>
           <section className="count-message">
             <h2>
-            There are {count} Items To Complete
+            There are {count} items to complete. <br></br>Click page number if you don't see any.
             </h2>
           </section>
         </Row>
