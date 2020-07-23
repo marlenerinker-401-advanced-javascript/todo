@@ -5,7 +5,7 @@ This project contains a todo list application.
 
 ### Author: Marlene Rinker
 
-- [Submission PR](https://github.com/marlenerinker-401-advanced-javascript/todo/pull/2)
+- [Submission PR](https://github.com/marlenerinker-401-advanced-javascript/todo/pull/3)
 <!-- - [Tests Report](https://github.com/marlenerinker-401-advanced-javascript/resty/actions)
 - [GitHub Pages deployment](https://marlenerinker-401-advanced-javascript.github.io/resty/) -->
 
@@ -36,6 +36,7 @@ No `.env` requirements at this time.
 - enzyme-adapter-react-16
 - react-test-renderer 
 - axios
+- react-bootstrap-4-pagination
 
 
 
