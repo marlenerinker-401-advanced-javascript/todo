@@ -9,7 +9,6 @@ class Auth extends React.Component {
   static contextType = LoginContext;
   render() {
     let okToRender = false;
-    console.log(this.props.capability);
     try {
       okToRender =
         this.context.loggedIn &&
@@ -28,7 +27,6 @@ class Auth extends React.Component {
     /// are you logged in?
     /// Is there a capability that we care about?
     /// do you have it?
-    console.log(okToRender);
     return (
       <If condition={okToRender}>
         <div>{this.props.children}</div>

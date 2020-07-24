@@ -10,6 +10,7 @@ import Auth from '../auth/auth.js';
 import './todo.scss';
 import axios from 'axios';
 import { LoginContext } from '../../context/auth-context.js';
+import cookie from 'react-cookies';
 
 
 
@@ -139,6 +140,13 @@ const ToDo = () => {
     setCount(number);    
 
   }, [list]);
+
+  // useEffect(() => {
+  //   const cookieToken = cookie.load('auth');
+  //   const user = cookieToken || {};
+  //   console.log('this is the cookieToken: ', cookieToken);
+  //   context.setState({user: user});
+  // });
 
    
 

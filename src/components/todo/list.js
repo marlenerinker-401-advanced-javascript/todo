@@ -25,7 +25,7 @@ const TodoList = (props) => {
     currentPage: currentPage,
     showMax: totalPages,
     size: 'lg',
-    prevNext: false,
+    prevNext: true,
     onClick: function (page) {
       
       cutList(props.list, page);
@@ -52,7 +52,7 @@ const TodoList = (props) => {
     if(page !== 1) {
       startIndex = (page * context.settings[0].pageMax)-1;
     }
-    console.log(startIndex);
+    
     let pageList = [];
     for(let i = startIndex; i< (startIndex + context.settings[0].pageMax); i++) {
       if(tempList[i]){        
@@ -64,7 +64,7 @@ const TodoList = (props) => {
       setDisplay(pageList);
     }
     
-    return(pageList);
+    
     
     
   }
@@ -89,6 +89,8 @@ const TodoList = (props) => {
         cutList(props.list, 1);
         setPage(1);
         setFirstLoad(false);
+      }else {
+        cutList(props.list, currentPage);
       }
     }, 500);
   });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
@@ -59,13 +59,23 @@ class LoginProvider extends React.Component {
   };
 
   logout = () => {
+    cookie.remove('auth');
     this.setLoginState(false, null, {});
   };
 
   setLoginState = (loggedIn, token, user) => {
     cookie.save('auth', token);
+    console.log('this is the user in setLoginState: ', user);
     this.setState({ token, loggedIn, user });
   };
+
+  // componentDidMount() {
+  //   const cookieToken = cookie.load('auth');
+  //   const user = cookieToken || {};
+  //   console.log('this is the cookieToken: ', cookieToken)
+  //   this.setState({user: user});
+  // };
+  
 
   render() {
     return (
