@@ -5,7 +5,7 @@ This project contains a todo list application.
 
 ### Author: Marlene Rinker
 
-- [Submission PR](https://github.com/marlenerinker-401-advanced-javascript/todo/pull/3)
+- [Submission PR](https://github.com/marlenerinker-401-advanced-javascript/todo/pull/5)
 <!-- - [Tests Report](https://github.com/marlenerinker-401-advanced-javascript/resty/actions)
 - [GitHub Pages deployment](https://marlenerinker-401-advanced-javascript.github.io/resty/) -->
 
@@ -15,7 +15,9 @@ This project contains a todo list application.
 ### Setup
 
 #### `.env` requirements
-No `.env` requirements at this time.
+REACT_APP_API=the api url
+REACT_APP_SECRET=your secret word or phrase
+REACT_APP_ADMIN_TOKEN=token for this if you have one
 
 
 #### Packages to Install
@@ -37,6 +39,9 @@ No `.env` requirements at this time.
 - react-test-renderer 
 - axios
 - react-bootstrap-4-pagination
+- dotenv
+- react-cookies
+- jsonwebtoken
 
 
 

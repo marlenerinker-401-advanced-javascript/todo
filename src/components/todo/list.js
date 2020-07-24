@@ -5,9 +5,11 @@ import Pagination from 'react-bootstrap-4-pagination';
 
 
 
+
 const TodoList = (props) => {
 
   const context = useContext(SettingsContext);
+  
 
   
   
@@ -38,7 +40,6 @@ const TodoList = (props) => {
     let filteredList = [];
     
     if(context.settings[0].showCompleted === false){
-      console.log('in the if statement');
       for(let j = 0; j < tempList.length; j++) {
         if(tempList[j].complete === false) {
           filteredList.push(tempList[j]);
@@ -68,15 +69,6 @@ const TodoList = (props) => {
     
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      if(firstLoad === true) {
-        cutList(props.list, 1);
-        setPage(1);
-        setFirstLoad(false);
-      }
-    }, 2000);
-  });
   
   
   
@@ -90,12 +82,17 @@ const TodoList = (props) => {
     itemStatus = 'Pending';
     return 'danger';
   };
-
   
-
-  
-
-  
+  useEffect(() => {
+    setTimeout(() => {
+      if(firstLoad === true) {
+        cutList(props.list, 1);
+        setPage(1);
+        setFirstLoad(false);
+      }
+    }, 500);
+  });
+    
   
   
   return (
@@ -107,14 +104,14 @@ const TodoList = (props) => {
             key={item._id}
         
           
-            onClose={() => props.handleDelete(item._id)}>
+            onClose={() => props.handleDelete(item._id, displayList)}>
           
             <Toast.Header>
               <Container fluid>
                 <Row>
                   <Col lg="auto">
 
-                    <Badge pill variant={handleStatus(item)} onClick={() => props.handleComplete(item._id)}>{itemStatus}</Badge>{' '}
+                    <Badge pill variant={handleStatus(item)} onClick={() => props.handleComplete(item._id, displayList)}>{itemStatus}</Badge>{' '}
                   </Col>
                   <Col lg="auto">
                     <h4>
