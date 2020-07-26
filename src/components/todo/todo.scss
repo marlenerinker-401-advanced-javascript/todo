@@ -5,7 +5,14 @@ body, html {
     width: 100%;
 }
 
+.alert {
+    margin: auto;
+}
 
+.pseudo-link {
+    text-decoration: underline blue;
+    color: blue;
+}
 
 #page-numbers {
     margin: 20px;

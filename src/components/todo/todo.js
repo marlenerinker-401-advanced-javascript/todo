@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
-import {Container, Row, Col } from 'react-bootstrap';
+import {Container, Row, Col, Alert } from 'react-bootstrap';
 import Auth from '../auth/auth.js';
 
 
@@ -12,9 +12,9 @@ import axios from 'axios';
 import { LoginContext } from '../../context/auth-context.js';
 import cookie from 'react-cookies';
 
-
-
-
+const If = props => {
+  return props.condition ? props.children : null;
+};
 
 
 const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
@@ -30,6 +30,8 @@ const ToDo = () => {
   
   const [list, setList] =useState([]);
   const [count, setCount] =useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState('');
   
   
   const addItem = (item) => {
@@ -54,6 +56,8 @@ const ToDo = () => {
         .catch(console.error);
     } else {
       console.error('not authorized');
+      setMessage('You\'re not allowed to add items');
+      setShowAlert(true);
     }
     
     
@@ -86,6 +90,8 @@ const ToDo = () => {
       }
     }else {
       console.error('not authorized');
+      setMessage('You\'re not allowed to update items');
+      setShowAlert(true);
     }
 
   };
@@ -116,6 +122,8 @@ const ToDo = () => {
       }
     }else {
       console.error('not authorized');
+      setMessage('You\'re not allowed to delete items');
+      setShowAlert(true);
     }
 
   };
@@ -141,11 +149,15 @@ const ToDo = () => {
 
   }, [list]);
 
+  //trying to figure out creating a session with cookie
+
   // useEffect(() => {
-  //   const cookieToken = cookie.load('auth');
-  //   const user = cookieToken || {};
-  //   console.log('this is the cookieToken: ', cookieToken);
-  //   context.setState({user: user});
+  //   if(context.loggedIn === true){
+  //     const cookieToken = cookie.load('auth');
+  //     const user = cookieToken || {};
+  //     console.log('this is the cookieToken: ', cookieToken);
+  //     context.setSession(user);
+  //   }
   // });
 
    
@@ -153,8 +165,15 @@ const ToDo = () => {
   return (
     <>
       <Auth capability="read">
-        <Container fluid>
-          <Row fluid>
+        <Container >
+          <If condition={showAlert === true}> 
+            <Row >
+              <Alert class="alert" variant="danger" onClose={() => setShowAlert(false)} dismissible>
+                <Alert.Heading>{message}</Alert.Heading>
+              </Alert>
+            </Row>
+          </If>
+          <Row >
             <section className="count-message">
               <h2>
             There are {count} items to complete.
